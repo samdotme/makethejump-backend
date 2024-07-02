@@ -1,0 +1,4 @@
+transformers>=4.21.0
+torch>=1.10.0
+ctransformers==0.2.27
+huggingface_hub==0.23.4
