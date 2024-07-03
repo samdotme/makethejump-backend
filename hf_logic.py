@@ -1,5 +1,4 @@
 from transformers import AutoModelForCausalLM, AutoTokenizer
-import torch
 from huggingface_hub import login
 from langchain_huggingface import HuggingFaceEndpoint
 from langchain.chains import LLMChain
