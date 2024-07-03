@@ -4,15 +4,18 @@ from urllib.parse import urlparse, parse_qs
 from huggingface_hub import login
 # from logic import LlmLogicBrain
 from hf_logic import HfLlmLogicBrain
+from dotenv import load_dotenv
+import os
 
 class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
     # Class attribute for brain
     brain = None
+    load_dotenv()
 
     @classmethod
     def initialize_brain(cls):
         # Replace 'your_token_here' with your actual Hugging Face token
-        hf_token = "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"  # Ensure to provide the actual token here
+        hf_token = os.getenv('HF_TOKEN')  # Ensure to provide the actual token here if not using environment variable
         login(hf_token)
         cls.brain = HfLlmLogicBrain(hf_token)
 
