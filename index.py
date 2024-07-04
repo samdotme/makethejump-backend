@@ -15,7 +15,6 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
     def initialize_brain(cls):
         # Replace 'your_token_here' with your actual Hugging Face token
         hf_token = os.getenv('HF_TOKEN')  # Ensure to provide the actual token here if not using environment variable
-        login(hf_token)
         cls.brain = HfLlmLogicBrain(hf_token)
 
     def do_GET(self):

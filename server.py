@@ -13,7 +13,6 @@ class BrainHandler:
     @classmethod
     def initialize_brain(cls):
         hf_token = os.getenv('HF_TOKEN')
-        login(hf_token)
         cls.brain = HfLlmLogicBrain(hf_token)
 
     @classmethod
