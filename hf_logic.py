@@ -4,6 +4,8 @@ from langchain_core.prompts import PromptTemplate
 
 class HfLlmLogicBrain:
     def __init__(self, hf_token):
+      
+      print(f"Token obtained from environment: {hf_token}")
     
       repo_id = "mistralai/Mistral-7B-Instruct-v0.2"
       self.llm = HuggingFaceEndpoint(
