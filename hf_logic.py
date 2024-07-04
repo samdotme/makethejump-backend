@@ -14,7 +14,7 @@ class HfLlmLogicBrain:
       self.llm = HuggingFaceEndpoint(
           repo_id=repo_id,
           temperature=0.5,
-          huggingfacehub_api_token=hf_token,
+          # huggingfacehub_api_token=hf_token,
       )
 
     def respond(self, question):
