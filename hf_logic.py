@@ -1,9 +1,12 @@
-from huggingface_hub import login
+from huggingface_hub import HfApi
 from langchain_huggingface import HuggingFaceEndpoint
 from langchain_core.prompts import PromptTemplate
 
 class HfLlmLogicBrain:
     def __init__(self, hf_token):
+      api = HfApi(token=hf_token)
+      user_info = api.whoami()
+      print(f"Successfully authenticated as: {user_info['name']}")
       
       print(f"Token obtained from environment: {hf_token}")
     
