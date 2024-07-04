@@ -131,3 +131,7 @@ cython_debug/
 
 # Ignore VSCode settings
 .vscode/
+
+# Ignore packages
+python
+layer.zip
