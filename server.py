@@ -9,7 +9,13 @@ class BrainHandler:
 
     @classmethod
     def initialize_brain(cls):
+        # Load environment variables
+        load_dotenv()
+        
         hf_token = os.getenv('HF_TOKEN')
+        
+        print(f"Token obtained from environment: {hf_token}")
+        
         if not hf_token:
             raise ValueError("Hugging Face token not found in environment variables")
         
@@ -24,10 +30,7 @@ class BrainHandler:
         return cls.brain.respond(prompt)
 
 
-def lambda_handler(event, context):
-    # Load environment variables
-    load_dotenv()
-    
+def lambda_handler(event, context):    
     # Initialize the brain once at the start
     BrainHandler.initialize_brain()
     
