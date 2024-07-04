@@ -4,16 +4,18 @@ from hf_logic import HfLlmLogicBrain
 from dotenv import load_dotenv
 import os
 
-# Load environment variables
-load_dotenv()
-
 class BrainHandler:
     brain = None
 
     @classmethod
     def initialize_brain(cls):
         hf_token = os.getenv('HF_TOKEN')
+        if not hf_token:
+            raise ValueError("Hugging Face token not found in environment variables")
+        
         cls.brain = HfLlmLogicBrain(hf_token)
+        
+        print(f"Token obtained from environment: {hf_token}")
 
     @classmethod
     def get_response(cls, prompt):
@@ -21,10 +23,14 @@ class BrainHandler:
             raise ValueError("Brain not initialized")
         return cls.brain.respond(prompt)
 
-# Initialize the brain once at the start
-BrainHandler.initialize_brain()
 
 def lambda_handler(event, context):
+    # Load environment variables
+    load_dotenv()
+    
+    # Initialize the brain once at the start
+    BrainHandler.initialize_brain()
+    
     try:
         # Check if brain is initialized
         if BrainHandler.brain is None:

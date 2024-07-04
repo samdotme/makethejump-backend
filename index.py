@@ -13,8 +13,10 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
 
     @classmethod
     def initialize_brain(cls):
-        # Replace 'your_token_here' with your actual Hugging Face token
-        hf_token = os.getenv('HF_TOKEN')  # Ensure to provide the actual token here if not using environment variable
+        hf_token = os.getenv('HF_TOKEN')
+        if not hf_token:
+            raise ValueError("Hugging Face token not found in environment variables")
+        
         cls.brain = HfLlmLogicBrain(hf_token)
 
     def do_GET(self):
