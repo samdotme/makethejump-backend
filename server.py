@@ -49,10 +49,10 @@ def lambda_handler(event, context):
             }
 
         # Parse the path and query parameters from the event
-        path = event.get('path', '')
+        path = event.get('rawPath', '')
         if path == '/makethejump/bot':
             query_params = event.get('queryStringParameters', {})
-            prompt = query_params.get('prompt')
+            prompt = query_params.get('prompt', '')
 
             if not prompt:
                 return {
