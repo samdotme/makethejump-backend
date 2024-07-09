@@ -1,8 +1,6 @@
-FROM public.ecr.aws/lambda/python:3.12
+FROM 654654287954.dkr.ecr.us-west-2.amazonaws.com/makethejump/python-base
 
 # Copy function code and dependencies
-COPY requirements.txt  .
-RUN pip install -r requirements.txt
 COPY server.py  .
 COPY hf_logic.py  .
 COPY lambda-entrypoint.sh /lambda-entrypoint.sh
