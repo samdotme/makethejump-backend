@@ -1,4 +1,4 @@
-FROM 654654287954.dkr.ecr.us-west-2.amazonaws.com/makethejump/python-base:863063d
+FROM 654654287954.dkr.ecr.us-west-2.amazonaws.com/makethejump/python-base:402d640
 
 # Copy function code and dependencies
 COPY server.py  .
