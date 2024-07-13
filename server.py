@@ -12,13 +12,15 @@ class BrainHandler:
         load_dotenv()
         
         hf_token = os.getenv('HF_TOKEN')
+        pinecone_api_key = os.getenv('PINECONE_API_KEY')
+        pinecone_index_name = os.getenv('PINECONE_INDEX_NAME')
         
         print(f"Token obtained from environment: {hf_token}")
         
         if not hf_token:
             raise ValueError("Hugging Face token not found in environment variables")
         
-        cls.brain = HfLlmLogicBrain(hf_token)
+        cls.brain = HfLlmLogicBrain(hf_token, pinecone_api_key, pinecone_index_name)
         
         print(f"Token obtained from environment: {hf_token}")
 
@@ -26,7 +28,7 @@ class BrainHandler:
     def get_response(cls, prompt):
         if cls.brain is None:
             raise ValueError("Brain not initialized")
-        return cls.brain.respond(prompt)
+        return cls.brain.respond_with_chain(prompt)
 
 
 def lambda_handler(event, context):    

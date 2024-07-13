@@ -17,7 +17,10 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
         if not hf_token:
             raise ValueError("Hugging Face token not found in environment variables")
         
-        cls.brain = HfLlmLogicBrain(hf_token)
+        pinecone_api_key = os.getenv('PINECONE_API_KEY')
+        pinecone_index_name = os.getenv('PINECONE_INDEX_NAME')
+        
+        cls.brain = HfLlmLogicBrain(hf_token, pinecone_api_key, pinecone_index_name)
 
     def do_GET(self):
         # Check if brain is initialized
@@ -55,7 +58,7 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
             prompt = query_params['prompt'][0]
             
             print(f'Prompt: {prompt}')
-            response = self.brain.respond(prompt)
+            response = self.brain.respond_with_chain(prompt)
             print(f'Response: {response}')
             
             response_data = {'response': response}
