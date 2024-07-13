@@ -1,19 +1,10 @@
 from huggingface_hub import HfApi
 from langchain_huggingface import HuggingFaceEndpoint
 from langchain_core.prompts import PromptTemplate
-from langchain import hub
 from langchain_core.runnables import RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
-# from langchain_core.vectorstores import Pinecone
-from sentence_transformers import SentenceTransformer
 from langchain.embeddings.sentence_transformer import SentenceTransformerEmbeddings
-import pinecone
-# from pinecone import Pinecone
-# from langchain_community.vectorstores import Pinecone
 from langchain_pinecone import PineconeVectorStore
-from langchain.retrievers.self_query.base import SelfQueryRetriever
-from langchain.chains.query_constructor.base import AttributeInfo
-from pinecone import Pinecone, ServerlessSpec
 from langchain_core.prompts import PromptTemplate
 
 class HfLlmLogicBrain:
