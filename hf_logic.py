@@ -20,8 +20,16 @@ class HfLlmLogicBrain:
           # huggingfacehub_api_token=hf_token,
       )
       
+      print("Loaded LLM")
+      
       embeddings = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
+      
+      print("Loaded embeddings")
+      
       vectorstore = PineconeVectorStore(index_name=pinecone_index_name, embedding=embeddings)
+      
+      print("Loaded vector store")
+      
       self.retriever = vectorstore.as_retriever()
 
     @staticmethod
