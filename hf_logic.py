@@ -1,3 +1,4 @@
+import os
 from huggingface_hub import HfApi
 from langchain_huggingface import HuggingFaceEndpoint
 from langchain_core.prompts import PromptTemplate
@@ -6,6 +7,10 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain.embeddings.sentence_transformer import SentenceTransformerEmbeddings
 from langchain_pinecone import PineconeVectorStore
 from langchain_core.prompts import PromptTemplate
+
+# Set the cache directory to /tmp
+os.environ['TRANSFORMERS_CACHE'] = '/tmp'
+os.environ['HF_HOME'] = '/tmp'
 
 class HfLlmLogicBrain:
     def __init__(self, hf_token, pinecone_api_key, pinecone_index_name):
