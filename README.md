@@ -1,16 +1,37 @@
-To zip and create layer:
+<h1 align="center">The Cat Cafe</h1>
 
-    python -m venv venv
-    source venv/bin/activate
+<p align="center">
+  This is the back end for an intelligent chatbot that powers a fictional Cat Cafe adoption service. It's backed by an LLM that uses your proprietary data and keeps it private.
+</p>
 
-    pip install huggingface_hub langchain-core langchain-huggingface langchain-text-splitters 
+<p align="center">
+  <strong>Build your own at <a href="http://makethejump.ai/developer">MakeTheJump.ai/developer</a></strong>
+</p>
+<br/>
 
-    pip freeze > requirements.txt
+## Getting Started
 
-    mkdir python
-    pip install -r requirements.txt -t python/
+### Install Python
 
-    mkdir python
-    pip install -r requirements.txt -t python/
-    zip -r9 layer.zip python
-    
+I'm recording several video to walk you through this process, both on a Mac and a Windows computer.
+
+Mac: [Link pending]
+Windows: [Link pending]
+
+### Running Locally
+
+From a command prompt run
+
+    python index.py
+
+You should see an output of text that ends with:
+
+    Loaded embeddings
+    Loaded vector store
+    Starting server on port 8000
+
+### Testing
+
+You can do a quick check of the system by visiting http://localhost:8000/makethejump/bot?prompt=suggest+a+cat+breed+for+me
+
+To test it with a front end user interface, you'll want to fire up the companion front end repository. You can find that here: https://github.com/samdotme/makethejump-bot
