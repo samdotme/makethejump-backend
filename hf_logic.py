@@ -41,6 +41,12 @@ class HfLlmLogicBrain:
     def format_docs(docs):
       return "\n\n".join(doc.page_content for doc in docs)
 
+    @staticmethod
+    def clean_response(response):
+      if "Question:" in response:
+          response = response.split("Question:")[0].strip()
+      return response
+
     def respond_with_chain(self, query):     
       template = """You are an assistant specialized in answering general questions about cats. 
       If asked about a cat available for adoption, use the following pieces of retrieved context to provide accurate and concise answers. 
@@ -48,7 +54,7 @@ class HfLlmLogicBrain:
       Politely and cutely decline to answer questions about unrelated topics, such as politics. 
       Keep your answers to a maximum of three sentences and ensure they are concise.
 
-      {context}
+      Context: {context}
 
       Question: {question}
 
@@ -62,7 +68,7 @@ class HfLlmLogicBrain:
           | StrOutputParser()
       )
 
-      return rag_chain.invoke(query)
+      return self.clean_response(rag_chain.invoke(query))
       
       
 
