@@ -1,7 +1,7 @@
-import json
-from llm_logic import HfLlmLogicBrain
-from dotenv import load_dotenv
 import os
+from dotenv import load_dotenv
+import json
+from llm_logic import LlmLogicBrain
 
 # Set the cache directory to /tmp
 os.environ['TRANSFORMERS_CACHE'] = '/tmp'
@@ -15,18 +15,9 @@ class BrainHandler:
         # Load environment variables
         load_dotenv()
         
-        hf_token = os.getenv('HF_TOKEN')
-        pinecone_api_key = os.getenv('PINECONE_API_KEY')
         pinecone_index_name = os.getenv('PINECONE_INDEX_NAME')
         
-        print(f"Token obtained from environment: {hf_token}")
-        
-        if not hf_token:
-            raise ValueError("Hugging Face token not found in environment variables")
-        
-        cls.brain = HfLlmLogicBrain(hf_token, pinecone_api_key, pinecone_index_name)
-        
-        print(f"Token obtained from environment: {hf_token}")
+        cls.brain = LlmLogicBrain(pinecone_index_name)
 
     @classmethod
     def get_response(cls, prompt):

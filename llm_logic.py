@@ -1,13 +1,12 @@
-import os
-from langchain_huggingface import HuggingFaceEndpoint, HuggingFaceEmbeddings
+from langchain_huggingface import HuggingFaceEndpoint
 from langchain_community.embeddings import SentenceTransformerEmbeddings
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 from langchain_pinecone import PineconeVectorStore
 
-class HfLlmLogicBrain:
-    def __init__(self, hf_token, pinecone_api_key, pinecone_index_name):
+class LlmLogicBrain:
+    def __init__(self, pinecone_index_name):
       repo_id = "mistralai/Mistral-7B-Instruct-v0.2"
       self.llm = HuggingFaceEndpoint(
           repo_id=repo_id,
@@ -37,10 +36,10 @@ class HfLlmLogicBrain:
       return response
 
     def respond_with_chain(self, query):     
-      template = """You are an assistant specialized in answering general questions about cats. 
-      If asked about a cat available for adoption, use the following pieces of retrieved context to provide accurate and concise answers. 
+      template = """You are an assistant specialized in answering questions about cats. 
+      If asked specificlaly about a cat available for adoption, use the retrieved context to provide accurate and concise answers. 
       If asked a general question about cats or pets in general, do not use the retrieved content.
-      Politely and cutely decline to answer questions about unrelated topics, such as politics. 
+      Politely and cutely decline to answer questions about topics unrelated to pets in general or pet adoption. 
       Keep your answers to a maximum of three sentences and ensure they are concise.
 
       Context: {context}

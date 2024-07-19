@@ -3,3 +3,11 @@ FROM public.ecr.aws/lambda/python:3.12
 # Copy function code and dependencies
 COPY requirements.txt  .
 RUN pip install -r requirements.txt
+
+# Pre-bake expensive model
+RUN python3 -c "from huggingface_hub import HfApi; from sentence_transformers import SentenceTransformer; SentenceTransformer('all-MiniLM-L6-v2')"
+
+# Copy base code necessary to run on AWS Lambda
+COPY server.py  .
+COPY lambda-entrypoint.sh /lambda-entrypoint.sh
+RUN chmod +x /lambda-entrypoint.sh
