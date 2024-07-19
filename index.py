@@ -2,7 +2,7 @@ import json
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import urlparse, parse_qs
 from huggingface_hub import login
-from hf_logic import HfLlmLogicBrain
+from llm_logic import HfLlmLogicBrain
 from dotenv import load_dotenv
 import os
 

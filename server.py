@@ -1,7 +1,11 @@
 import json
-from hf_logic import HfLlmLogicBrain
+from llm_logic import HfLlmLogicBrain
 from dotenv import load_dotenv
 import os
+
+# Set the cache directory to /tmp
+os.environ['TRANSFORMERS_CACHE'] = '/tmp'
+os.environ['HF_HOME'] = '/tmp'
 
 class BrainHandler:
     brain = None
