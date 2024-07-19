@@ -1,4 +1,4 @@
-FROM 654654287954.dkr.ecr.us-west-2.amazonaws.com/makethejump/python-base:402d640
+FROM 654654287954.dkr.ecr.us-west-2.amazonaws.com/makethejump/python-base:e1c5b8b
 
 # Copy function code and dependencies
 COPY llm_logic.py  .
