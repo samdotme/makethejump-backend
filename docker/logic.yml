@@ -2,8 +2,9 @@ FROM 654654287954.dkr.ecr.us-west-2.amazonaws.com/makethejump/python-base:e1c5b8
 
 # Copy function code and dependencies
 COPY llm_logic.py  .
-COPY lambda-entrypoint.sh /lambda-entrypoint.sh
-RUN chmod +x /lambda-entrypoint.sh
+# COPY server.py  .
+# COPY lambda-entrypoint.sh /lambda-entrypoint.sh
+# RUN chmod +x /lambda-entrypoint.sh
 
 # Set the entrypoint to use the Lambda Runtime Interface Client
 ENTRYPOINT ["/lambda-entrypoint.sh"]
