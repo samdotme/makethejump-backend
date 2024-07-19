@@ -1,13 +1,7 @@
-FROM 654654287954.dkr.ecr.us-west-2.amazonaws.com/makethejump/python-base:402d640
-
-# Pre-bake expensive model
-RUN python3 -c "from huggingface_hub import HfApi; from sentence_transformers import SentenceTransformer; SentenceTransformer('all-MiniLM-L6-v2')"
+FROM 654654287954.dkr.ecr.us-west-2.amazonaws.com/makethejump/python-base:1f2966b
 
 # Copy function code and dependencies
-COPY server.py  .
-COPY hf_logic.py  .
-COPY lambda-entrypoint.sh /lambda-entrypoint.sh
-RUN chmod +x /lambda-entrypoint.sh
+COPY llm_logic.py  .
 
 # Set the entrypoint to use the Lambda Runtime Interface Client
 ENTRYPOINT ["/lambda-entrypoint.sh"]

@@ -2,7 +2,7 @@ import json
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import urlparse, parse_qs
 from huggingface_hub import login
-from hf_logic import HfLlmLogicBrain
+from llm_logic import LlmLogicBrain
 from dotenv import load_dotenv
 import os
 
@@ -13,14 +13,9 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
 
     @classmethod
     def initialize_brain(cls):
-        hf_token = os.getenv('HF_TOKEN')
-        if not hf_token:
-            raise ValueError("Hugging Face token not found in environment variables")
-        
-        pinecone_api_key = os.getenv('PINECONE_API_KEY')
         pinecone_index_name = os.getenv('PINECONE_INDEX_NAME')
         
-        cls.brain = HfLlmLogicBrain(hf_token, pinecone_api_key, pinecone_index_name)
+        cls.brain = LlmLogicBrain(pinecone_index_name)
 
     def do_GET(self):
         # Check if brain is initialized
