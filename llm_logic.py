@@ -31,6 +31,9 @@ class LlmLogicBrain:
 
     @staticmethod
     def clean_response(response):
+      if "Alternative Answer:" in response:
+          response = response.split("Alternative Answer:")[0].strip()
+      
       if "Question:" in response:
           response = response.split("Question:")[0].strip()
       return response
