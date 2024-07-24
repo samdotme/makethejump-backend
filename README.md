@@ -16,6 +16,7 @@
 I'm recording several video to walk you through this process, both on a Mac and a Windows computer.
 
 Mac: [Link pending]
+
 Windows: [Link pending]
 
 ### Set Up Environment
@@ -23,6 +24,14 @@ Windows: [Link pending]
 Copy the file `.env.example` and paste. Then rename the pasted file to be `.env`.
 
 Fill out the environment variables with your values.
+
+### Install Dependencies
+
+From a root prompt type:
+
+    pip install -r requirements.txt
+
+This will take a few minutes to download, even on a fast internet connection.
 
 ### Running Locally
 
