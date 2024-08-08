@@ -53,4 +53,6 @@ class LlmLogicBrain:
       )
       chain = setup_and_retrieval | prompt | self.llm | output_parser
       
-      return chain.invoke(query)
+      response = chain.invoke(query)
+      
+      return response.split(" Question:")[0]
