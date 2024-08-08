@@ -5,7 +5,7 @@ class LlmLogicBrain:
       repo_id = "mistralai/Mistral-7B-Instruct-v0.2"
       self.llm = HuggingFaceEndpoint(
           repo_id=repo_id,
-          temperature=0.2,
+          temperature=0.9,
       )
       
       print("Loaded LLM")

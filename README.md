@@ -15,10 +15,6 @@
 
 I'm recording several video to walk you through this process, both on a Mac and a Windows computer.
 
-Mac: [Link pending]
-
-Windows: [Link pending]
-
 ### Set Up Environment
 
 Copy the file `.env.example` and paste. Then rename the pasted file to be `.env`.
