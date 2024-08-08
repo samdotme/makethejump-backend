@@ -21,6 +21,14 @@ Copy the file `.env.example` and paste. Then rename the pasted file to be `.env`
 
 Fill out the environment variables with your values.
 
+### Install VSCode Python Extension
+
+From VSCode, click "Extensions". Then search for "Python".
+
+Choose the extension from Microsoft and install it.
+
+For best results, quit and restart VSCode. Sometimes the language server doesn't start up properly otherwise.
+
 ### Install Dependencies
 
 From a root prompt type:
@@ -29,20 +37,18 @@ From a root prompt type:
 
 This will take a few minutes to download, even on a fast internet connection.
 
-### Running Locally
+## Running Locally
 
 From a command prompt run
 
     python index.py
 
-You should see an output of text that ends with:
+You should see an output of text that includes:
 
-    Loaded embeddings
-    Loaded vector store
     Starting server on port 8000
 
-### Testing
+## Testing
 
 You can do a quick check of the system by visiting http://localhost:8000/makethejump/bot?prompt=suggest+a+cat+breed+for+me
 
-To test it with a front end user interface, you'll want to fire up the companion front end repository. You can find that here: https://github.com/samdotme/makethejump-bot
+To test it with a front end user interface, you'll want to fire up the companion front end repository. You can find that here: https://github.com/samdotme/makethejump-frontend
