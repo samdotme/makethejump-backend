@@ -50,3 +50,11 @@ You should see an output of text that ends with:
 You can do a quick check of the system by visiting http://localhost:8000/makethejump/bot?prompt=suggest+a+cat+breed+for+me
 
 To test it with a front end user interface, you'll want to fire up the companion front end repository. You can find that here: https://github.com/samdotme/makethejump-bot
+
+### Branches
+
+You should start with the `main` branch and build from this. However, if you ever want to check the "standard" setup for a given lesson, you can find the branch for that lesson. It will be named like this:
+
+    module[##]-lesson[##]
+
+Every lesson which contains coding instructions will be called out with a `(coding)` tag in the title. The `lesson[##]` will follow this. So if a video is the 2nd `(coding)` lesson in the module it will be `lesson02`.
