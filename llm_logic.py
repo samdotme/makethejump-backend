@@ -21,7 +21,7 @@ class LlmLogicBrain:
       
       vectorstore = PineconeVectorStore(index_name=pinecone_index_name, embedding=embeddings)
       
-      print("Loaded vectore store")
+      print("Loaded vector store")
       
       self.retriever = vectorstore.as_retriever()
       
