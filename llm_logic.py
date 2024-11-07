@@ -28,8 +28,7 @@ class LlmLogicBrain:
 
       prompt = PromptTemplate.from_template(template)
       
-      llm_chain = prompt | self.llm
+      chain = prompt | self.llm
 
       # Example invocation:
-      return llm_chain.invoke({"context": context, "question": query})
-
+      return chain.invoke({"context": context, "question": query})
