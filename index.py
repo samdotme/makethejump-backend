@@ -9,7 +9,7 @@ import os
 class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
     # Class attribute for brain
     brain = None
-    load_dotenv()
+    load_dotenv(override=True)
 
     @classmethod
     def initialize_brain(cls):
